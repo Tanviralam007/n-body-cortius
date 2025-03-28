@@ -14,7 +14,7 @@ class Particle:
         self.acceleration_x_direction += force_x / self.mass
         self.acceleration_y_direction += force_y / self.mass
 
-    def update(selt, dt):
+    def update(self, dt):
         self.velocity_x_direction += self.acceleration_x_direction * dt
         self.velocity_y_direction += self.acceleration_y_direction * dt
         self.x += self.velocity_x_direction * dt

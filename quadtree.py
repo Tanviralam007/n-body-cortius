@@ -22,7 +22,7 @@ class Quadtree:
     def __init__(self, boundary):
         self.boundary = boundary
         self.particles = []
-        self.devided = False
+        self.divided = False
         self.northwest = self.northeast = self.southwest = self.southeast = None
 
     def subdivide(self):
@@ -33,7 +33,7 @@ class Quadtree:
         self.northeast = Quadtree(Boundary(x + w, y - h, w, h))
         self.southwest = Quadtree(Boundary(x - w, y + h, w, h))
         self.southeast = Quadtree(Boundary(x + w, y + h, w, h))
-        self.devided = True
+        self.divided = True
 
     def insert(self, particle):
         if not self.boundary.contains(particle):
@@ -43,7 +43,7 @@ class Quadtree:
             self.particles.append(particle)
             return True
         else:
-            if not self.devided:
+            if not self.divided:
                 self.subdivide()
             if self.northwest.insert(particle): return True
             if self.northeast.insert(particle): return True
