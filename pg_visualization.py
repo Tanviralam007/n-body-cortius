@@ -5,26 +5,26 @@ from quadtree import Quadtree, Boundary
 from barnes_hut import compute_force_with_barnes_hut_algorithm
 
 pygame.init()
-WIDTH, HEIGHT = 600, 600
+WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("N-Body Simulation")
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-NUM_PARTICLES = 100
-particles = [Particle(random.uniform(-50, 50), random.uniform(-50, 50), random.uniform(1, 10)) for _ in range(NUM_PARTICLES)]
+NUM_PARTICLES = 10
+particles = []
+for _ in range(NUM_PARTICLES):
+    particle = Particle(random.uniform(-50, 50), random.uniform(-50, 50), random.uniform(1, 10))
+    particles.append(particle)
 
 boundary = Boundary(0, 0, 50, 50)
 dt = 0.1
 
-running = True
-
-while running:
+while True:
     screen.fill(BLACK)
 
     quadtree = Quadtree(boundary)
-
     for particle in particles:
         quadtree.insert(particle)
 
