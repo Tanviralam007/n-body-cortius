@@ -12,7 +12,7 @@ pygame.display.set_caption("N-Body Simulation")
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-NUM_PARTICLES = 10
+NUM_PARTICLES = 100
 particles = []
 for _ in range(NUM_PARTICLES):
     particle = Particle(random.uniform(-50, 50), random.uniform(-50, 50), random.uniform(1, 10))
@@ -40,6 +40,9 @@ while True:
         x_screen = int((particle.x + 50) * (WIDTH / 100))
         y_screen = int((particle.y + 50) * (HEIGHT / 100))
         pygame.draw.circle(screen, WHITE, (x_screen, y_screen), max(2, int(particle.mass)))
+    
+    for particle in particles:
+        print(f"Particle at ({particle.x}, {particle.y})")
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
